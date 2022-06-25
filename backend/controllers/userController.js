@@ -5,14 +5,14 @@ const User = require("../models/userModel");
 
 //register a user
 
-exports.registerUser = catchAsyncErrors(async (req,res,next) => {
-    const {name,email,password} = req.body;
+exports.registerUser = catchAsyncErrors(async (req, res, next) => {
+    const { name, email, password } = req.body;
 
     const user = await User.create({
         name,
         email,
         password,
-        avatar:{
+        avatar: {
             public_id: "this is sample id",
             url: "Publicpicurl",
         },

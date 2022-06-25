@@ -6,9 +6,9 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: [true, "Please Enter your name"],
         maxlength: [30, "Name cannot exceed 30 characters"],
-        minlength: [4,"Name must be 4 character long",]
+        minlength: [4, "Name must be 4 character long",]
     },
-    email:{
+    email: {
         type: String,
         required: [true, " Please Enter your name"],
         unique: true,
@@ -36,6 +36,6 @@ const userSchema = new mongoose.Schema({
     },
     resetPasswordToken: String,
     resetPasswordExpire: Date,
-    });
+});
 
-    module.exports = mongoose.model("user", userSchema)
+module.exports = mongoose.model("user", userSchema)
