@@ -5,7 +5,6 @@ const User = require("../models/userModel");
 const sendToken = require("../utils/jwttoken")
 
 //register a user
-
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
     const { name, email, password } = req.body;
 
