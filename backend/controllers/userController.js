@@ -100,6 +100,7 @@ exports.forgotPassword = catchAsyncErrors(async (req, res, next) => {
     }
 });
 
+// resetpsswrd token
 exports.resetPassword = catchAsyncErrors(async (req, res, next) => {
     const resetPasswordToken = crypto.createHash("sha256").update(req.param.token).digest("hex");
 
