@@ -6,13 +6,14 @@ const router = express.Router();
 
 router.route("/products").get( getAllProducts);
 
-router.route("/products/new")
+router.route("/admin/product/new")
     .post(isAuthenticatedUser, authorizedRoles("admin"), createProduct);
 
-router.route("/products/:id")
+router.route("/admin/product/:id")
     .put(isAuthenticatedUser, authorizedRoles("admin"), updateProduct)
     .delete(isAuthenticatedUser, authorizedRoles("admin"), deleteProduct)
-    .get(getProductDetails);
+    
+router.route("/product/:id").get(getProductDetails);
 
 
 
