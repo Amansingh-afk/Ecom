@@ -129,7 +129,7 @@ exports.resetPassword = catchAsyncErrors(async (req, res, next) => {
 // Get user details
 exports.getUserDetails = catchAsyncErrors(async (req, res, next) => {
 
-    const user = await User.findById(req.user.id);
+    const user = await User.findById(req.user._id);
 
     res.status(200).json({
         success: true,
@@ -189,7 +189,7 @@ exports.getAllUser = catchAsyncErrors(async (req, res, next) => {
 })
 
 //Get single user --admin
-exports.getSingleUser = catchasyncErrors(async (req, res, next) => {
+exports.getSingleUser = catchAsyncErrors(async (req, res, next) => {
     const user = await User.findById(req.params.id);
 
     if (!user) {
@@ -231,17 +231,21 @@ exports.deleteUser = catchAsyncErrors(async (req, res, next) => {
 
     const user = await User.findById(req.params.id);
 
-    if(!user){
+    if (!user) {
         return next(
             new ErrorHandler(`user does not exist with id: ${req.params.id}`)
         );
     }
 
     await user.remove();
+
     res.status(200).json({
         success: true,
+        message: "User deleted successfully",
     });
 });
+
+
 
 
 
