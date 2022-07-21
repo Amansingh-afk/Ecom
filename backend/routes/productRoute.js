@@ -17,6 +17,4 @@ router.route("/product/:id").get(getProductDetails);
 
 router.route("/review").put(isAuthenticatedUser, createProductReview);
 
- 
-
 module.exports = router;

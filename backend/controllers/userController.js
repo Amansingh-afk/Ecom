@@ -28,19 +28,20 @@ exports.loginUser = catchAsyncErrors(async (req, res, next) => {
     const { email, password } = req.body;
 
     //checking valid email&pasword
-    if (!email || !password)
+    if (!email || !password) {
         return next(new ErrorHandler("Please Enter email & password", 400));
-
+    }
     const user = await User.findOne({ email }).select("+password");
 
-    if (!user)
+    if (!user) {
         return next(new ErrorHandler("Invalid email & password:", 401));
+    }
 
-    const isPasswordMatched = user.comparePassword(password);
+    const isPasswordMatched = await user.comparePassword(password);
 
-    if (!isPasswordMatched)
+    if (!isPasswordMatched) {
         return next(new ErrorHandler("Invalid email & password", 401));
-
+    }
     sendToken(user, 200, res);
 });
 
@@ -129,22 +130,22 @@ exports.resetPassword = catchAsyncErrors(async (req, res, next) => {
 // Get user details
 exports.getUserDetails = catchAsyncErrors(async (req, res, next) => {
 
-    const user = await User.findById(req.user._id);
+    const user = await User.findById(req.user.id);
 
     res.status(200).json({
         success: true,
         user,
-    })
+    });
 });
 
 //psswrd update
 exports.updatePassword = catchAsyncErrors(async (req, res, next) => {
     const user = await User.findById(req.user.id).select("+password");
 
-    const isPasswordMatched = await User.comparePassword(req.body.oldPassword);
+    const isPasswordMatched = await user.comparePassword(req.body.oldPassword);
 
     if (!isPasswordMatched) {
-        return nect(new ErrorHandler("Old password is incorrect", 400));
+        return next(new ErrorHandler("Old password is incorrect", 400));
     }
 
     if (req.body.newPassword !== req.body.confirmPassword) {
@@ -198,7 +199,7 @@ exports.getSingleUser = catchAsyncErrors(async (req, res, next) => {
         );
     }
 
-    res.staus(200).json({
+    res.status(200).json({
         success: true,
         user,
     });
