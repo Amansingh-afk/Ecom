@@ -3,18 +3,18 @@ const mongoose = require("mongoose");
 const productSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: [true, " Product name Missing."]
+        required: [true, " Product Name Missing."]
     },
     description: {
         type: String,
-        required: [true, "Product description Missing."]
+        required: [true, "Product Description Missing."]
     },
     price: {
         type: Number,
         required: [true, "Product price missing."],
         maxlength: [8, " max lenght reached"]
     },
-    rating: {
+    ratings: {
         type: Number,
         default: 0
     },
@@ -46,6 +46,11 @@ const productSchema = new mongoose.Schema({
     },
     reviews: [
         {
+            user:{
+                type: mongoose.Schema.ObjectId,
+                ref: "User",
+                required: true,
+            },
             name: {
                 type: String,
                 required: true
@@ -57,12 +62,17 @@ const productSchema = new mongoose.Schema({
             comment: {
                 type: String,
                 required: true
-            }
-        }
+            },
+        },
     ],
+    user:{
+        type: mongoose.Schema.ObjectId,
+        ref: "User",
+        required: true,
+    },
     createdAt: {
         type: Date,
-        default: Date.now
+        default: Date.now,
     }
 })
 
