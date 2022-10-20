@@ -1902,8 +1902,8 @@ input.num-product::-webkit-inner-spin-button {
   -moz-transition: all 0.4s;
   transition: all 0.4s;
 
-  visibility: hidden;
-  opacity: 0;
+  /* visibility: hidden; */
+  /* opacity: 0; */
 }
 
 .overlay-modal1 {
@@ -1922,6 +1922,9 @@ input.num-product::-webkit-inner-spin-button {
   opacity: 1;
 }
 
+.product-img{
+  max-width: 450px;
+}
 /*//////////////////////////////////////////////////////////////////
 [ Table Shopping Cart ]*/
 

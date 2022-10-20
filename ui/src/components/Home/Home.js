@@ -2,10 +2,13 @@ import React from 'react';
 
 import Banner from "./Banner.js";
 import ProductCard from "./ProductCard.js";
+import Slider from '../layout/Slider/Slider'
 
 const Home = () => {
     return (
-        <><Banner />
+        <>
+        <Slider />
+        <Banner />
             <section className="bg0 p-t-23 p-b-140">
                 <div className="container">
                     <div className="p-b-10">
