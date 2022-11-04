@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 import useModal from '../../hooks/useModal';
 import ProductModal from '../layout/Modal/ProductModal';
@@ -6,19 +7,20 @@ import ProductModal from '../layout/Modal/ProductModal';
 import prod from "../../assets/images/product-01.jpg";
 import prodj from "../../assets/images/icons/icon-heart-01.png";
 
-const ProductCard = () => {
+const ProductCard = ({product}) => {
 
     const {isShowing, toggle} = useModal();
 
     return (
-        <>
+        <Link to={product._id}>
         <div className="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
             {/* <!-- Block2 --> */}
             <div className="block2">
                 <div className="block2-pic hov-img0">
                     <img src={prod} alt="IMG-PRODUCT" />
-
-                    <a className="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04" onClick={toggle}>
+                   
+                    {/* onClick={toggle} */}
+                    <a className="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
                         Quick View
                     </a>
                     {/* <div className="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 " onClick={toggle}>
@@ -29,11 +31,11 @@ const ProductCard = () => {
                 <div className="block2-txt flex-w flex-t p-t-14">
                     <div className="block2-txt-child1 flex-col-l ">
                         <a href="product-detail.html" className="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                            Esprit Ruffle Shirt
+                            {product.name}
                         </a>
 
                         <span className="stext-105 cl3">
-                            $16.64
+                            {product.price}
                         </span>
                     </div>
 
@@ -45,14 +47,14 @@ const ProductCard = () => {
                     </div>
                 </div>
             
-        
+{/*         
         <ProductModal
-        showDetails={isShowing}
-        hideX={toggle} 
-        />
+            showDetails={isShowing}
+            hideX={toggle} 
+        /> */}
         </div>
         </div>
-        </>
+        </Link>
 
     );
 }

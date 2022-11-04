@@ -2,13 +2,22 @@ import React from 'react';
 
 import Banner from "./Banner.js";
 import ProductCard from "./ProductCard.js";
-import Slider from '../layout/Slider/Slider'
+import Slider from '../layout/Slider/Slider';
+import Metadata from '../layout/Metadata';
+
+const product = {
+    name: 'blue-green',
+    images: [{ url: 'sd' }],
+    price: '$55',
+    _id: 'pr-1',
+};
 
 const Home = () => {
     return (
         <>
-        <Slider />
-        <Banner />
+        {/* <Metadata titel="Ecommerce app" /> */}
+            <Slider />
+            <Banner />
             <section className="bg0 p-t-23 p-b-140">
                 <div className="container">
                     <div className="p-b-10">
@@ -61,7 +70,7 @@ const Home = () => {
 
                     <div className="container" id="container">
 
-                        <ProductCard />
+                        <ProductCard product={product} />
 
                     </div>
                 </div>

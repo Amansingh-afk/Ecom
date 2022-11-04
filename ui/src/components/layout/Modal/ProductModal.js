@@ -2,9 +2,6 @@ import React from "react";
 import ReactDOM  from "react-dom";
 import { Outlet, Link } from "react-router-dom";
 
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-
 import close from "../../../assets/images/icons/icon-close.png"
 import productImg1 from "../../../assets/images/product-detail-01.jpg"
 import productImg2 from "../../../assets/images/product-detail-02.jpg"

@@ -10,16 +10,13 @@ import Footer from './components/layout/Footer/Footer';
 import Home from './components/Home/Home';
 function App() {
   return (
-    <>
     <BrowserRouter>
+    <Header />
     <Routes>
-      <Route element={<Header />} />
-      <Route path='/' element={<Home />}/>
-      <Route element={<Footer />} />
+      <Route path="/" element={<Home />} />
     </Routes>
+    <Footer />
     </BrowserRouter>
-    
-    </>
   );
 }
 
